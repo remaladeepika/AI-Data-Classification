@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Data Classification | Iris Predictor</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        <span class="logo-icon">🌸</span>
+        <span>AI Classifier</span>
+    </div>
+
+    <div class="nav-links">
+        <a href="/" class="active">Home</a>
+        <a href="/about">About</a>
+    </div>
+
+</nav>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            ✨ Machine Learning Powered
+        </div>
+
+        <h1>
+            AI Data
+            <span>Classification</span>
+        </h1>
+
+        <p>
+            Predict Iris flower species using an intelligent
+            Decision Tree machine learning model.
+        </p>
+
+        <div class="hero-stats">
+
+            <div>
+                <strong>{{ model_info.total_samples }}</strong>
+                <small>Samples</small>
+            </div>
+
+            <div>
+                <strong>{{ model_info.total_features }}</strong>
+                <small>Features</small>
+            </div>
+
+            <div>
+                <strong>{{ model_info.accuracy }}%</strong>
+                <small>Accuracy</small>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="hero-visual">
+
+        <div class="flower-card">
+            <div class="flower">🌺</div>
+            <div class="scan-line"></div>
+
+            <span>AI MODEL</span>
+            <h3>Decision Tree</h3>
+
+            <div class="status">
+                <i></i>
+                Model Ready
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PREDICTION SECTION
+========================================================= -->
+
+<main class="container">
+
+    <section class="prediction-section">
+
+        <div class="section-heading">
+
+            <span class="section-tag">PREDICT</span>
+
+            <h2>
+                Classify an Iris Flower
+            </h2>
+
+            <p>
+                Enter the four flower measurements below
+                and let the AI model identify the species.
+            </p>
+
+        </div>
+
+
+        <div class="prediction-layout">
+
+            <!-- INPUT CARD -->
+
+            <div class="card input-card">
+
+                <div class="card-title">
+
+                    <div class="icon-box">🌿</div>
+
+                    <div>
+                        <h3>Flower Measurements</h3>
+                        <p>Enter values in centimeters</p>
+                    </div>
+
+                </div>
+
+
+                <form id="predictionForm">
+
+                    <div class="input-grid">
+
+                        <div class="input-group">
+
+                            <label for="sepal_length">
+                                Sepal Length
+                            </label>
+
+                            <div class="input-wrapper">
+                                <input
+                                    type="number"
+                                    id="sepal_length"
+                                    step="0.1"
+                                    min="0"
+                                    placeholder="e.g. 5.1"
+                                    required
+                                >
+                                <span>cm</span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label for="sepal_width">
+                                Sepal Width
+                            </label>
+
+                            <div class="input-wrapper">
+                                <input
+                                    type="number"
+                                    id="sepal_width"
+                                    step="0.1"
+                                    min="0"
+                                    placeholder="e.g. 3.5"
+                                    required
+                                >
+                                <span>cm</span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label for="petal_length">
+                                Petal Length
+                            </label>
+
+                            <div class="input-wrapper">
+                                <input
+                                    type="number"
+                                    id="petal_length"
+                                    step="0.1"
+                                    min="0"
+                                    placeholder="e.g. 1.4"
+                                    required
+                                >
+                                <span>cm</span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label for="petal_width">
+                                Petal Width
+                            </label>
+
+                            <div class="input-wrapper">
+                                <input
+                                    type="number"
+                                    id="petal_width"
+                                    step="0.1"
+                                    min="0"
+                                    placeholder="e.g. 0.2"
+                                    required
+                                >
+                                <span>cm</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="sample-buttons">
+
+                        <span>Try sample:</span>
+
+                        <button type="button"
+                                onclick="loadSample('setosa')">
+                            Setosa
+                        </button>
+
+                        <button type="button"
+                                onclick="loadSample('versicolor')">
+                            Versicolor
+                        </button>
+
+                        <button type="button"
+                                onclick="loadSample('virginica')">
+                            Virginica
+                        </button>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="predict-btn"
+                        id="predictBtn"
+                    >
+                        <span>🔮</span>
+                        Predict Flower
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- RESULT CARD -->
+
+            <div class="card result-card" id="resultCard">
+
+                <div class="result-placeholder" id="resultPlaceholder">
+
+                    <div class="result-icon">
+                        🧠
+                    </div>
+
+                    <h3>Ready to Predict</h3>
+
+                    <p>
+                        Enter flower measurements and click
+                        <strong>Predict Flower</strong> to see
+                        the AI classification.
+                    </p>
+
+                </div>
+
+
+                <div class="result-content hidden" id="resultContent">
+
+                    <span class="result-label">
+                        PREDICTION RESULT
+                    </span>
+
+                    <div class="result-flower" id="resultFlower">
+                        🌸
+                    </div>
+
+                    <h2 id="predictionName">
+                        Iris Setosa
+                    </h2>
+
+                    <div class="confidence-box">
+
+                        <div class="confidence-header">
+
+                            <span>Model Confidence</span>
+
+                            <strong id="confidenceValue">
+                                100%
+                            </strong>
+
+                        </div>
+
+                        <div class="progress">
+                            <div
+                                class="progress-bar"
+                                id="confidenceBar">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="prediction-message" id="predictionMessage">
+                        The Decision Tree model has classified
+                        your input successfully.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MODEL INFORMATION
+    ====================================================== -->
+
+    <section class="info-section">
+
+        <div class="section-heading">
+
+            <span class="section-tag">MODEL INSIGHTS</span>
+
+            <h2>Machine Learning Overview</h2>
+
+            <p>
+                Information about the dataset and trained model.
+            </p>
+
+        </div>
+
+
+        <div class="info-grid">
+
+            <div class="info-card">
+
+                <span class="info-icon">📊</span>
+
+                <h3>Dataset</h3>
+
+                <strong>{{ model_info.dataset }}</strong>
+
+                <p>
+                    A classic dataset containing measurements
+                    of three Iris flower species.
+                </p>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <span class="info-icon">🧠</span>
+
+                <h3>Algorithm</h3>
+
+                <strong>Decision Tree</strong>
+
+                <p>
+                    A supervised machine learning algorithm
+                    used for classification.
+                </p>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <span class="info-icon">🎯</span>
+
+                <h3>Accuracy</h3>
+
+                <strong>{{ model_info.accuracy }}%</strong>
+
+                <p>
+                    Accuracy achieved on the testing dataset.
+                </p>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <span class="info-icon">🌿</span>
+
+                <h3>Classes</h3>
+
+                <strong>3 Species</strong>
+
+                <p>
+                    Setosa, Versicolor and Virginica.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         DATASET DETAILS
+    ====================================================== -->
+
+    <section class="dataset-section">
+
+        <div class="dataset-card">
+
+            <div>
+
+                <span class="section-tag">
+                    DATASET DETAILS
+                </span>
+
+                <h2>Iris Dataset</h2>
+
+                <p>
+                    The model uses four numerical features
+                    to classify the flower species.
+                </p>
+
+            </div>
+
+
+            <div class="feature-list">
+
+                {% for feature in model_info.features %}
+
+                <div class="feature-item">
+                    <span>✓</span>
+                    {{ feature }}
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         VISUALIZATIONS
+    ====================================================== -->
+
+    <section class="visual-section">
+
+        <div class="section-heading">
+
+            <span class="section-tag">VISUAL ANALYSIS</span>
+
+            <h2>Model Visualizations</h2>
+
+            <p>
+                Visual representation of model performance
+                and decision-making.
+            </p>
+
+        </div>
+
+
+        <div class="visual-grid">
+
+            <div class="visual-card">
+
+                <div class="visual-header">
+
+                    <div>
+                        <h3>Confusion Matrix</h3>
+                        <p>Prediction performance</p>
+                    </div>
+
+                    <span>📈</span>
+
+                </div>
+
+                <img
+                    src="{{ url_for('static', filename='images/confusion_matrix.png') }}"
+                    alt="Confusion Matrix"
+                    onerror="this.src='/assets/confusion_matrix.png'"
+                >
+
+            </div>
+
+
+            <div class="visual-card">
+
+                <div class="visual-header">
+
+                    <div>
+                        <h3>Decision Tree</h3>
+                        <p>Model decision structure</p>
+                    </div>
+
+                    <span>🌳</span>
+
+                </div>
+
+                <img
+                    src="{{ url_for('static', filename='images/decision_tree.png') }}"
+                    alt="Decision Tree"
+                    onerror="this.src='/assets/decision_tree.png'"
+                >
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+            <strong>🌸 AI Data Classification</strong>
+            <p>
+                Machine Learning Project • Decision Tree
+            </p>
+        </div>
+
+        <div>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        © 2026 AI Data Classification. Built with Python & Flask.
+    </div>
+
+</footer>
+
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

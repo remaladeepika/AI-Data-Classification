@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>About | AI Data Classification</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        <span class="logo-icon">🌸</span>
+        <span>AI Classifier</span>
+    </div>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/about" class="active">About</a>
+    </div>
+
+</nav>
+
+
+<!-- ABOUT HERO -->
+
+<section class="about-hero">
+
+    <div class="badge">
+        🧠 About the Project
+    </div>
+
+    <h1>
+        AI Data Classification
+    </h1>
+
+    <p>
+        A machine learning web application that uses
+        a Decision Tree algorithm to classify Iris flowers
+        based on their physical measurements.
+    </p>
+
+</section>
+
+
+<main class="container">
+
+
+    <!-- PROJECT OVERVIEW -->
+
+    <section class="about-section">
+
+        <div class="section-heading">
+
+            <span class="section-tag">
+                PROJECT OVERVIEW
+            </span>
+
+            <h2>How the System Works</h2>
+
+            <p>
+                The application connects a trained machine
+                learning model with a simple interactive
+                web interface.
+            </p>
+
+        </div>
+
+
+        <div class="process-grid">
+
+            <div class="process-card">
+
+                <div class="process-number">01</div>
+
+                <span>📊</span>
+
+                <h3>Input Data</h3>
+
+                <p>
+                    The user enters four measurements:
+                    sepal length, sepal width, petal length
+                    and petal width.
+                </p>
+
+            </div>
+
+
+            <div class="process-card">
+
+                <div class="process-number">02</div>
+
+                <span>🧠</span>
+
+                <h3>Decision Tree</h3>
+
+                <p>
+                    The trained Decision Tree analyzes the
+                    measurements and identifies patterns.
+                </p>
+
+            </div>
+
+
+            <div class="process-card">
+
+                <div class="process-number">03</div>
+
+                <span>🔮</span>
+
+                <h3>Prediction</h3>
+
+                <p>
+                    The model predicts whether the flower
+                    belongs to Setosa, Versicolor or Virginica.
+                </p>
+
+            </div>
+
+
+            <div class="process-card">
+
+                <div class="process-number">04</div>
+
+                <span>📈</span>
+
+                <h3>Result</h3>
+
+                <p>
+                    The prediction and model confidence are
+                    displayed instantly on the website.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MODEL DETAILS -->
+
+    <section class="details-section">
+
+        <div class="details-card">
+
+            <span class="section-tag">
+                MODEL DETAILS
+            </span>
+
+            <h2>Training Information</h2>
+
+            <div class="details-table">
+
+                <div>
+                    <span>Dataset</span>
+                    <strong>{{ model_info.dataset }}</strong>
+                </div>
+
+                <div>
+                    <span>Total Samples</span>
+                    <strong>{{ model_info.total_samples }}</strong>
+                </div>
+
+                <div>
+                    <span>Total Features</span>
+                    <strong>{{ model_info.total_features }}</strong>
+                </div>
+
+                <div>
+                    <span>Training Samples</span>
+                    <strong>{{ model_info.training_samples }}</strong>
+                </div>
+
+                <div>
+                    <span>Testing Samples</span>
+                    <strong>{{ model_info.testing_samples }}</strong>
+                </div>
+
+                <div>
+                    <span>Accuracy</span>
+                    <strong>{{ model_info.accuracy }}%</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="algorithm-card">
+
+            <span class="algorithm-icon">
+                🌳
+            </span>
+
+            <span class="section-tag">
+                ALGORITHM
+            </span>
+
+            <h2>Decision Tree</h2>
+
+            <p>
+                A Decision Tree is a supervised machine
+                learning algorithm that makes predictions
+                by splitting data according to feature values.
+            </p>
+
+            <p>
+                In this project, the algorithm learns from
+                Iris flower measurements and creates a tree
+                structure for classifying new observations.
+            </p>
+
+            <div class="algorithm-points">
+
+                <div>✓ Supervised Learning</div>
+                <div>✓ Classification Algorithm</div>
+                <div>✓ Four Input Features</div>
+                <div>✓ Three Output Classes</div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CLASSES -->
+
+    <section class="classes-section">
+
+        <div class="section-heading">
+
+            <span class="section-tag">
+                TARGET CLASSES
+            </span>
+
+            <h2>Iris Flower Species</h2>
+
+        </div>
+
+
+        <div class="class-grid">
+
+            <div class="class-card">
+
+                <div>🌸</div>
+
+                <h3>Iris Setosa</h3>
+
+                <p>
+                    Class 0
+                </p>
+
+            </div>
+
+
+            <div class="class-card">
+
+                <div>🌼</div>
+
+                <h3>Iris Versicolor</h3>
+
+                <p>
+                    Class 1
+                </p>
+
+            </div>
+
+
+            <div class="class-card">
+
+                <div>🌺</div>
+
+                <h3>Iris Virginica</h3>
+
+                <p>
+                    Class 2
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TECHNOLOGY -->
+
+    <section class="technology-section">
+
+        <div class="tech-content">
+
+            <span class="section-tag">
+                TECHNOLOGY STACK
+            </span>
+
+            <h2>Built With</h2>
+
+            <p>
+                This project combines machine learning,
+                Python backend development and modern
+                frontend technologies.
+            </p>
+
+        </div>
+
+
+        <div class="tech-grid">
+
+            <div class="tech-item">🐍 Python</div>
+            <div class="tech-item">🧠 Scikit-learn</div>
+            <div class="tech-item">🌐 Flask</div>
+            <div class="tech-item">🎨 HTML & CSS</div>
+            <div class="tech-item">⚡ JavaScript</div>
+            <div class="tech-item">📊 Matplotlib</div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+            <strong>🌸 AI Data Classification</strong>
+            <p>
+                Machine Learning Project • Decision Tree
+            </p>
+        </div>
+
+        <div>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        © 2026 AI Data Classification. Built with Python & Flask.
+    </div>
+
+</footer>
+
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

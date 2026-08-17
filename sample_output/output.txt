@@ -1,0 +1,17 @@
+==================================================
+AI DATA CLASSIFICATION USING DECISION TREE
+==================================================
+
+Dataset Loaded Successfully!
+
+Training Data: 120
+Testing Data : 30
+
+Model Trained Successfully!
+
+Model Accuracy: 100.0 %
+
+Sample Flower Prediction:
+Flower Type: setosa
+
+Project Completed Successfully!
